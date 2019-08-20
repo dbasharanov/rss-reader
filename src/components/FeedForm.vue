@@ -2,7 +2,7 @@
   <div class='form-wrapper'>
     <form @submit.prevent="onSubmit">  
       <input placeholder="Add New Feed URL" type="text"  id="feedUrl" v-model="$v.url.$model">
-      <input type="submit" name="commit" value="ADD" class="button primary hollow" :disabled="$v.invalid">
+      <button type="button" class="button primary" :disabled="$v.invalid">Add Feed</button>
       {{url}}
     </form>
   </div>
@@ -50,16 +50,22 @@ export default {
         &#feedUrl {
           width: calc(100% - 100px);
         }
-        &[type="submit"] {
-          width: 100px; 
-        }
       }
+      button {width: 100px;height: 40px;}
     } 
   }
 
-.button.hollow.primary {
+.button.primary {
   border: 1px solid #f59700;
-  color: #f59700;
+  background-color: #f59700;
+  color: #fff;
+  cursor: pointer;
+  
+  &:hover {
+    border: 1px solid #f59700;
+    background-color: #ffffff;
+    color: #f59700;
+  }
 }
 .button.hollow, .button.hollow:hover, .button.hollow:focus {
   background-color: transparent;
