@@ -5,9 +5,9 @@
       <label for="username">Username</label>
       <input type="text" v-model="username" id="username" placeholder="Ivan Ivanov">
       <label for="email">Email</label>
-      <input type="text" id="email" placeholder="ivan@gmail.com">
+      <input type="text" v-model="email" id="email" placeholder="ivan@gmail.com">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="******">
+      <input type="password" v-model="password" id="password" placeholder="******">
 
       <input type="submit" value="Register" :disabled="$v.$error">
     </form>
@@ -17,7 +17,10 @@
 
 <script>
   import { required } from 'vuelidate/lib/validators';
-
+  import axios from 'axios';
+  import config from '@/config/db';
+  import { registerUser } from '@/services/authServices'
+  
   export default {
     data() {
       return {
@@ -31,9 +34,11 @@
       email: {required},
       password: {required}
     },
+    mixins: [registerUser],
     methods: {
       onFormSubmit(){
-        console.log("WORK");
+        this.registration(this.username, this.password, this.email)
+            .then(res => this.$router.push('/'));
       }
     }
   }

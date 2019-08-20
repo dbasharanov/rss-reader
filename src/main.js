@@ -6,7 +6,13 @@ import store from '@/store'
 Vue.config.productionTip = false
 
 import Vuelidate from 'vuelidate'
+import axiosPlugin from '@/plugins/axionPlugin'
+import { authService } from '@/services/authServices'
+
 Vue.use(Vuelidate)
+Vue.use(axiosPlugin)
+
+Vue.mixin(authService)
 
 new Vue({
   store,

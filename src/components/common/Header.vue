@@ -2,7 +2,13 @@
   <header>
     <ul>
       <li>
-        <router-link to="/login">Login</router-link>
+        <template v-if='isAuthenticated'>
+          <a href="/logout" @click.prevent="logout">LogOut</a>
+        </template>
+        <template v-else>
+          <router-link to="/login">Login</router-link> |
+          <router-link to="/signup">SignUp</router-link>
+        </template>
       </li>
   </ul>
   </header>
@@ -10,7 +16,14 @@
 
 <script>
   export default {
-    name: 'Header' 
+    name: 'Header' ,
+    methods: {
+      logout() {
+        console.log("Are BE")
+        localStorage.removeItem('authtoken');
+        localStorage.removeItem('username');
+      }
+    }
   }
 </script>
 
