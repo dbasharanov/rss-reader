@@ -38,6 +38,10 @@ export default {
   $medium-gray: #e1e1e1;
 
   * {outline:none;}
+  body {
+    margin:0;
+    padding:0;
+  }
   a {
     color: $black;  
     webkit-transition: opacity .3s ease-in;

@@ -14,6 +14,6 @@
   footer {
     width: 100%;
     height: 40px;
-    background-color: #fff234;
+    background-color: #f1f1f1;
   }
 </style>

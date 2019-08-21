@@ -31,6 +31,6 @@
   header {
     width: 100%;
     height: 40px;
-    background-color: #fff234;
+    background-color: #f59700;
   }
 </style>
