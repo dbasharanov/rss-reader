@@ -23,7 +23,7 @@
   aside {
     background-color: $light-gray;
     height: 100%;
-    position: fixed;
+    position: relative;
     top:0;
     padding: 60px 0px 20px;
     font-size:14px;

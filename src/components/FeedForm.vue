@@ -1,9 +1,12 @@
 <template>
   <div class='form-wrapper'>
-    <form @submit.prevent="onSubmit">  
+    <form @submit.prevent="postNewFeed">  
       <input placeholder="Add New Feed URL" type="text"  id="feedUrl" v-model="$v.url.$model">
+      <input type="submit"  name='dfks'>
       <button type="button" class="button primary" :disabled="$v.invalid">Add Feed</button>
-      {{url}}
+      <p v-if="!$v.invalid">
+        {{url}}
+      </p>
     </form>
   </div>
 </template>
@@ -12,6 +15,7 @@
 
 
 import { required } from 'vuelidate/lib/validators';
+import config from '@/config/db'
 
 export default {
   name: 'FeedForm',
@@ -30,8 +34,19 @@ export default {
     
   },
   methods: {
-    onSubmit() {
-
+    postNewFeed() {
+      const authString = btoa(config.appKey + ':' + config.appSecret);
+      fetch('https://baas.kinvey.com/appdata/' + config.appKey + '/feeds', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Kinvey '+ localStorage.getItem('authtoken'),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          url: this.url
+        }),
+      }).then(res => res.json())
+      .then(data => console.log(data));
     }
   }
 }
@@ -60,7 +75,7 @@ export default {
   background-color: #f59700;
   color: #fff;
   cursor: pointer;
-  
+
   &:hover {
     border: 1px solid #f59700;
     background-color: #ffffff;

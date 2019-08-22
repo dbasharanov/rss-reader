@@ -3,10 +3,12 @@
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
       <div class="off-canvas-content" data-off-canvas-content>
         <div id="content" class='small-12'>
+          <Header></Header>
           <MainMenu></MainMenu>
           <div class='content-wrapper small-offset-1 small-10 medium-offset-4 medium-6'> 
             <router-view/>
           </div>
+          <Footer></Footer>
         </div>
       </div>
     </div>
@@ -15,11 +17,15 @@
 
 <script>
 import MainMenu from './components/MainMenu.vue'
+import Header from './components/common/Header.vue'
+import Footer from './components/common/Footer.vue'
 
 export default {
   name: 'app',
   components: {
-    MainMenu
+    MainMenu,
+    Header,
+    Footer,
   }
 }
 </script>
@@ -32,6 +38,10 @@ export default {
   $medium-gray: #e1e1e1;
 
   * {outline:none;}
+  body {
+    margin:0;
+    padding:0;
+  }
   a {
     color: $black;  
     webkit-transition: opacity .3s ease-in;
