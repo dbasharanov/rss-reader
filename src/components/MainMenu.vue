@@ -2,7 +2,7 @@
   <aside class='large-2 medium-3 float-left show-for-medium'>
     <ul class='no-bullet main-menu'>
       <li>
-        <router-link to="/">All Feeds</router-link>
+        <router-link to="/">All Feeds <span v-if="feeds_count">({{feeds_count}})</span></router-link>
       </li>
       <li>
         <router-link to="/about">About</router-link>
@@ -10,6 +10,21 @@
     </ul>
   </aside>
 </template >
+
+
+<script>
+  export default {
+    name: 'MainMenu',
+    methods: {
+      
+    },
+    computed: {
+      feeds_count() {
+        return this.$store.getters.getFeedsLength;
+      }
+    }
+  }
+</script>
 
 
 <style lang="scss">
@@ -25,16 +40,18 @@
     height: 100%;
     position: relative;
     top:0;
-    padding: 60px 0px 20px;
+    padding: 20px 0px 20px;
     font-size:14px;
+    border: 2px solid #f59700;
     .main-menu {
+      list-style: none;
       li {
         position: relative;
         &:hover {
         }
         a {
           display: block;
-          padding: 5px 40px 5px 5px;
+          padding: 5px 40px 5px 10px;
           width: 100%;
           &.delete-feed {
             display: none;

@@ -2,7 +2,7 @@
   <div class='form-wrapper'>
     <form @submit.prevent="postNewFeed">  
       <input placeholder="Add New Feed URL" type="text"  id="feedUrl" v-model="$v.url.$model">
-      <input type="submit"  value='Add Feed' :disabled="$v.invalid" class="button primary">
+      <input type="submit"  value='Add Feed' :disabled="$v.invalid" class="button primary" >
       <p v-if="!$v.invalid">
         {{url}}
       </p>
@@ -69,19 +69,4 @@ export default {
     } 
   }
 
-.button.primary {
-  border: 1px solid #f59700;
-  background-color: #f59700;
-  color: #fff;
-  cursor: pointer;
-
-  &:hover {
-    border: 1px solid #f59700;
-    background-color: #ffffff;
-    color: #f59700;
-  }
-}
-.button.hollow, .button.hollow:hover, .button.hollow:focus {
-  background-color: transparent;
-}
 </style>

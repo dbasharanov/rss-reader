@@ -1,18 +1,18 @@
 <template>
-  <div class="off-canvas-wrapper" id="app">
-    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-      <div class="off-canvas-content" data-off-canvas-content>
-        <div id="content" class='small-12'>
-          <Header></Header>
-          <MainMenu></MainMenu>
-          <div class='content-wrapper small-offset-1 small-10 medium-offset-4 medium-6'> 
-            <router-view/>
-          </div>
-          <Footer></Footer>
+
+  <div>
+    <div id="content" class='small-12'>
+      <Header></Header>
+      <div class='row'>
+        <MainMenu></MainMenu>
+        <div class='content-wrapper small-offset-1 small-10 medium-offset-2 medium-6'> 
+          <router-view/>
         </div>
       </div>
     </div>
+    <Footer></Footer>
   </div>
+      
 </template>
 
 <script>
@@ -49,6 +49,7 @@ export default {
     -o-transition: opacity .3s ease-in;
     transition: opacity .3s ease-in;
     opacity:1;
+    text-decoration: none;
     &:hover {
       color: $primary-color;  
       opacity: 0.8;
@@ -69,8 +70,13 @@ export default {
   }
   *[class*='font-'] {line-height: 1.25;}
 
+
+#content {
+  min-height: calc(100vh - 40px);
+  padding-top: 100px;
+}
 .content-wrapper {
-  padding: 60px 0;
+  padding: 0;
 }
   /*==============GRID*=================*/
 .column {
@@ -151,12 +157,13 @@ export default {
 }
 
 @media print, screen and (min-width: 45em) {
-  .medium-offset-4 {
-      margin-left: 33.33333%;
+  .medium-offset-2 {
+    margin-left: 16.66667%;
   }
 }
 
 div, ul {margin: 0;padding: 0;}
+ul{list-style: none;}
 .float-left {float: left !important;}
 .float-right {float: right !important ;}
 .text-left{text-align: left;}
@@ -185,5 +192,20 @@ div, ul {margin: 0;padding: 0;}
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
+}
+.button.primary {
+  border: 1px solid #f59700;
+  background-color: #f59700;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #f59700;
+    background-color: #ffffff;
+    color: #f59700;
+  }
+}
+.button.hollow, .button.hollow:hover, .button.hollow:focus {
+  background-color: transparent;
 }
 </style>

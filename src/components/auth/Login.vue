@@ -2,12 +2,10 @@
   <div class="login">
     <h1>Login</h1>
     <form @submit.prevent="onFormSubmit">
-      <label for="login">Username</label>
       <input type="text" v-model="username" id="login" placeholder="Ivan Ivanov">
-      <label for="password">Password</label>
       <input type="password" v-model="password" id="password" placeholder="******">
 
-      <input type="submit" value="Login" :disabled="$v.$error">
+      <input type="submit" value="Login" :disabled="$v.$error" class='button primary'>
     </form>
   </div>
 </template>

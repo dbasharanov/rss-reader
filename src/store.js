@@ -1,43 +1,30 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-import config from '@/config/db'
+
+import feedActions from '@/feeds/feedActions'
+import feedMutations from '@/feeds/feedMutations'
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
 
   state: {
     feeds: [],
-    count: 11
+    isAuthenticated: (localStorage.getItem('authtoken') !== null)
   },
-  actions: {
-    getFeeds(context){
-      const authString = btoa(config.appKey + ':' + config.appSecret);
-      fetch('https://baas.kinvey.com/appdata/' + config.appKey + '/feeds', {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Kinvey '+ localStorage.getItem('authtoken'),
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json())
-      .then(data => context.commit('GET_ALL_FEEDS', data));
-    }
-  },
+  actions: feedActions,
+  mutations: feedMutations,
+
   getters: {
+    getAllFeeds(state) {
+      return state.feeds
+    },
     doubleCounter(state) {
       return state.count *2;
     },
-    getFeedsLenght(state) {
-      return state.feeds.size;
+    getFeedsLength(state) {
+      return state.feeds.length;
     }
   },
-  mutations: {
-    GET_ALL_FEEDS(state, payload) {
-      console.log(payload)
-      state.feeds = payload;
-    },
-    increment(state, payload) {
-      return state.count+=payload;
-    }
-  }
 });

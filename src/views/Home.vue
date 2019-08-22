@@ -19,8 +19,6 @@ export default {
   components:{
     FeedForm
   },
-  methods:{
-  },
   computed: {
     feeds() {
       return this.$store.state.feeds

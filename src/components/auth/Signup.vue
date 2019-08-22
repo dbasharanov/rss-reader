@@ -2,14 +2,12 @@
   <div class="register">
     <h1>Register</h1>
     <form @submit.prevent="onFormSubmit">
-      <label for="username">Username</label>
       <input type="text" v-model="username" id="username" placeholder="Ivan Ivanov">
-      <label for="email">Email</label>
+      
       <input type="text" v-model="email" id="email" placeholder="ivan@gmail.com">
-      <label for="password">Password</label>
       <input type="password" v-model="password" id="password" placeholder="******">
 
-      <input type="submit" value="Register" :disabled="$v.$error">
+      <input type="submit" value="Register" :disabled="$v.$error" class='button primary'>
     </form>
   </div>
 </template>   
@@ -43,3 +41,19 @@
     }
   }
 </script>
+
+<style lang="scss">
+
+  form {
+    input {
+      padding: 0 5px;
+      float: left;
+      height: 40px;
+      width: 100%;
+      margin-bottom: 20px;
+      &#feedUrl {
+        width: calc(100% - 100px);
+      }
+    }
+  }
+</style>
