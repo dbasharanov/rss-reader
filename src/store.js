@@ -8,13 +8,7 @@ export default new Vuex.Store({
 
   state: {
     feeds: [],
-  },
-
-  mutations: {
-    GET_ALL_FEEDS(state, payload) {
-      console.log(payload)
-      state.feeds = payload;
-    }
+    count: 11
   },
   actions: {
     getFeeds(context){
@@ -27,6 +21,23 @@ export default new Vuex.Store({
         }
       }).then(res => res.json())
       .then(data => context.commit('GET_ALL_FEEDS', data));
+    }
+  },
+  getters: {
+    doubleCounter(state) {
+      return state.count *2;
+    },
+    getFeedsLenght(state) {
+      return state.feeds.size;
+    }
+  },
+  mutations: {
+    GET_ALL_FEEDS(state, payload) {
+      console.log(payload)
+      state.feeds = payload;
+    },
+    increment(state, payload) {
+      return state.count+=payload;
     }
   }
 });
