@@ -10,13 +10,14 @@
           <router-link to="/signup">SignUp</router-link>
         </template>
       </li>
+      <li>{{this.$store.state.count}}</li>
   </ul>
   </header>
 </template>
 
 <script>
   export default {
-    name: 'Header' ,
+    name: 'Header',
     methods: {
       logout() {
         console.log("Are BE")

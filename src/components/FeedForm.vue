@@ -2,8 +2,7 @@
   <div class='form-wrapper'>
     <form @submit.prevent="postNewFeed">  
       <input placeholder="Add New Feed URL" type="text"  id="feedUrl" v-model="$v.url.$model">
-      <input type="submit"  name='dfks'>
-      <button type="button" class="button primary" :disabled="$v.invalid">Add Feed</button>
+      <input type="submit"  value='Add Feed' :disabled="$v.invalid" class="button primary">
       <p v-if="!$v.invalid">
         {{url}}
       </p>
@@ -66,7 +65,7 @@ export default {
           width: calc(100% - 100px);
         }
       }
-      button {width: 100px;height: 40px;}
+      input[type="submit"] {width: 100px;height: 40px;}
     } 
   }
 
